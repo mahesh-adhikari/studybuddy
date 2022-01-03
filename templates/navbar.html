@@ -1,0 +1,17 @@
+<nav class="navbar navbar-light bg-ligh" style="background-color: #bcd6f1;">
+  <div class="container">
+    <a class="navbar-brand mb-0 h1" href="/">STUDY BUD</a>
+    
+    <form class="d-flex mx-auto" action="{% url 'home'  %}" method="GET">
+      <input class="form-control me-2" type="search" placeholder="Search rooms..." name="q">
+      <button class="btn btn-outline-secondary" type="submit">Search</button>      
+    </form>
+
+    {% if request.user.is_authenticated %}
+      <span class="navbar-text">Hello {{request.user.first_name}} {{request.user.username}}</span>
+      <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+      {% else %}
+      <a href="{% url 'login' %}" class="nav-link">Login</a>
+    {% endif %}
+  </div>
+</nav>
